@@ -15,7 +15,12 @@ function activate(context) {
         const editor = vscode.window.activeTextEditor;
         const text = editor.document.getText();
 
-        const path = json2path.jsonPathTo(text, editor.document.offsetAt(editor.selection.active));
+        const path = json2path.generatePath(text, editor.document.offsetAt(editor.selection.active));
+        if (path.length > 0 && path[path.length - 1].type === "object" && !("key" in path[path.length - 1])) {
+            vscode.window.showInformationMessage('Invalid place to insert template!');
+            return;
+        }
+
         const schema = path2schema.generateSchema(path);
         const template = schema2template.generateTemplate(schema);
 

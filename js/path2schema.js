@@ -30,13 +30,13 @@ function getSchemaByPath(schema, path)
     }
 
     else if (schema["type"] === "object") {
-        if (path[0]["colType"] === 0) {
-            return getSchemaByPath(schema["properties"][path[0]["key"]], path.slice(1));
+        if (path[0].type === "object") {
+            return getSchemaByPath(schema["properties"][path[0].key], path.slice(1));
         } 
     }
 
     else if (schema["type"] === "array") {
-        if (path[0]["colType"] === 1) {
+        if (path[0].type === "array") {
             return getSchemaByPath(schema["items"], path.slice(1));
         }
     }
