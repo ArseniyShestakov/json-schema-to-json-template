@@ -9,9 +9,16 @@ function generateTemplate(schema, level) {
   
     if (type === "object") {
       let obj = {};
+
+      let properties;
+      if ("properties" in schema) {
+        properties = schema.properties;
+      } else if ("patternProperties" in schema) {
+        properties = schema.patternProperties;
+      }
   
-      Object.keys(schema["properties"]).forEach(function(key) {
-          let template = generateTemplate(schema["properties"][key], level === -1? -1 : level - 1);
+      Object.keys(properties).forEach(function(key) {
+          let template = generateTemplate(properties[key], level === -1? -1 : level - 1);
           if (template !== null) {
               obj[key] = template;
           }
