@@ -4,7 +4,8 @@
 
 Tool to generate JSON template from json schema.
 
-![DEMO](https://raw.githubusercontent.com/ChaunceyKiwi/json-schema-to-json-template/master/demo.gif)
+<img src="https://raw.githubusercontent.com/ChaunceyKiwi/json-schema-to-json-template/master/demo.gif" alt="alt text" width="600px">
+
 
 ## Requirement
 * Follow instructions on `https://code.visualstudio.com/docs/languages/json` to set up json schema files.
