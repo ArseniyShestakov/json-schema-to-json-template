@@ -22,7 +22,14 @@ function activate(context) {
         }
 
         const schema = path2schema.generateSchema(path);
-        const template = schema2template.generateTemplate(schema);
+
+        let autocompletionLevel = -1;
+        let autocompletionSetting = vscode.workspace.getConfiguration().autocompletion;
+        if (autocompletionSetting !== undefined) {
+            autocompletionLevel = autocompletionSetting.level;
+        }
+
+        const template = schema2template.generateTemplate(schema, autocompletionLevel + 1);
 
         editor.insertSnippet(new vscode.SnippetString(JSON.stringify(template, null, 2)));
     });

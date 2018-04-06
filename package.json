@@ -15,10 +15,23 @@
     ],
     "main": "./extension",
     "contributes": {
-        "commands": [{
-            "command": "extension.schema2template",
-            "title": "Generate template from schema"
-        }]
+        "commands": [
+            {
+                "command": "extension.schema2template",
+                "title": "Generate template from schema"
+            }
+        ],
+        "configuration": [
+            {
+                "title": "Autocompletion Level",
+                "properties": {
+                    "autocompletion.level": {
+                        "type": "number",
+                        "default": 32767
+                    }
+                }
+            }
+        ]
     },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install",

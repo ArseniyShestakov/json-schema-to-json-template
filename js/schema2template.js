@@ -1,7 +1,7 @@
 exports.generateTemplate = generateTemplate;
 
-function generateTemplate(schema) {
-    if (schema === undefined) {
+function generateTemplate(schema, level) {
+    if (level === 0 || schema === undefined) {
       return null;
     }
   
@@ -11,7 +11,7 @@ function generateTemplate(schema) {
       let obj = {};
   
       Object.keys(schema["properties"]).forEach(function(key) {
-          let template = generateTemplate(schema["properties"][key]);
+          let template = generateTemplate(schema["properties"][key], level === -1? -1 : level - 1);
           if (template !== null) {
               obj[key] = template;
           }
@@ -22,7 +22,7 @@ function generateTemplate(schema) {
   
     else if (type === "array") {
       let arr = [];
-      let template = generateTemplate(schema["items"]);
+      let template = generateTemplate(schema["items"], level === -1? -1 : level);
       if (template !== null) {
           arr.push(template);
       }
@@ -31,11 +31,11 @@ function generateTemplate(schema) {
   
     else {
       if (type === "boolean") {
-        return "false";
+        return "__TODO__";
       }
   
       else {
-        return "TODO";
+        return "__TODO__";
       }
     }
   }
