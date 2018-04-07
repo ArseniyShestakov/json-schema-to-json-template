@@ -36,6 +36,11 @@ Tool to generate JSON template from json schema.
 
 Users appreciate release notes as you update your extension.
 
-### 1.0.0
+### 1.0.1
 
 Initial release
+
+### 1.0.2
+
+Add level wise auto completion
+

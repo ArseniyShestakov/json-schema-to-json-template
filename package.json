@@ -2,7 +2,7 @@
     "name": "json-schema-to-json-template",
     "displayName": "JSON Schema to JSON Template",
     "description": "Generate json template from json schema.",
-    "version": "0.0.1",
+    "version": "1.0.2",
     "publisher": "ChaunceyKiwi",
     "engines": {
         "vscode": "^1.21.0"
